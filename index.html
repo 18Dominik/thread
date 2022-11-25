@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <!--import fetchAPI()"-->
+    <script src="static/fetchAPI.js"></script>
+    <!--import function startExampleWorker()"-->
+    <script src="static/frontend-worker/exampleWebWorker.js"></script>
+    <!--import function startPiCalcWorker()"-->
+    <script src="static/frontend-worker/piCalcWebWorker.js"></script>
+    <!--import function piCalc()"-->
+    <script src="static/frontend-worker/picalc_fe.js"></script>
+    <script>
+        function piCalc_main_fe() {
+            let pi = piCalc();
+            document.getElementById("piCalc_main_fe").innerHTML = `Pi: ${pi.pi}. Time: ${pi.time}`;
+        }
+    </script>
+    <h1>Pi Calculation</h1>
+    <!--from script function defined here in idex.html-->
+    <p id="piCalc_main_fe">PiCalc Frontend Main Thread</p>
+    <button onclick="piCalc_main_fe()">Get Data from Frontend Main Thread Calculation</button>
+
+    <!--from frontend/piCalcWebWorker.js-->
+    <p id="piCalc_worker_fe">PiCalc Frontend Webworker</p>
+    <button onclick="startPiCalcWorker()">Get Data from Frontend Worker Calculation</button>
+
+    <!--from ./fetchAPI.js-->
+    <p id="piCalc_main_be">PiCalc Backend Main Thread</p>
+    <button onclick="fetchMain()">Get Data from Backend Main Thread Calculation</button>
+
+    <!--from ./fetchAPI.js-->
+    <p id="piCalc_worker_be">PiCalc Backend Worker Thread</p>
+    <button onclick="fetchWorker()">Get Data from Backend Worker Calculation</button>
+
+    <!--from ./fetchAPI.js-->
+    <p id="piCalc_piscina_be">PiCalc Backend Piscina Worker Thread</p>
+    <button onclick="fetchPiscina()">Get Data from Backend Piscina Worker Calculation</button>
+
+    <!--from ./fetchAPI.js-->
+    <p id="piCalc_piscina_multi_be">Mulit-PiCalc Backend Piscina Worker Thread based on Input</p>
+    <input type=text id="numberofWorkers">
+    <button onclick="sendNumberofWorkers()">Post Number of Workers</button>
+    <p id="result">Average Pi</p>
+    <p id="avg_time">Average Time</p>
+    <!--from exampleWebWorker.js-->
+    <p id="example_worker">Example Worker</p>
+    <button onclick="startExampleWorker()">Get Data from Example Frontend Worker</button>
+</body>
+
+</html>
