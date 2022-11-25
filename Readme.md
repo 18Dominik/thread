@@ -8,6 +8,7 @@ This project compares implementations of cpu intensive monte carlo simulation in
 1. Initialize project
 
 - [ ] Your own node project: `npm init`. This command will walk you through the initialization
+- [ ] Install node packages `npm i`
 - [ ] Update dockerfile if necessary
 - [ ] Install mocha for unit testing: https://mochajs.org/#installation: `npm install --global mocha`
 2. Start application
